@@ -32,24 +32,40 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && goingDown == false)
         {
             direction = Vector2.up;
+            goingUp = true;
+            goingDown = false;
+            goingLeft = false;
+            goingRight = false;
         }
 
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.A) && goingRight == false )
         {
             direction = Vector2.left;
+            goingUp = false;
+            goingDown = false;
+            goingLeft = true;
+            goingRight = false;
         }
 
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.S) && goingUp == false)
         {
             direction = Vector2.down;
+            goingUp = false;
+            goingDown = true;
+            goingLeft = false;
+            goingRight = false;
         }
 
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.D) && goingLeft == false)
         {
             direction = Vector2.right;
+            goingUp = false;
+            goingDown = false;
+            goingLeft = false;
+            goingRight = true;
         }
 
     }
@@ -85,6 +101,8 @@ public class NewBehaviourScript : MonoBehaviour
         {
             Debug.Log("hit");
             Grow();
+
+            Time.fixedDeltaTime -= 0.001f;
         }
 
 
